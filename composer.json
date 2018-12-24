@@ -13,7 +13,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "youliPhpLib\\Common\\": "src/Common"
+            "youliPhpLib\\Common\\": "src/Common",
+            "youliPhpLib\\ErrMsg\\": "src/ErrMsg"
         }
     }
 }
