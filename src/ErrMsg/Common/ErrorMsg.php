@@ -34,5 +34,4 @@ namespace youliPhpLib\ErrMsg\Common;
 class ErrorMsg
 {
     const FILE_NAME_IS_EMPTY = '要检测路径是否完整的文件不能为空';
-
 }
