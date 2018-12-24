@@ -31,6 +31,8 @@
 namespace youliPhpLib\Common;
 
 
+use youliPhpLib\ErrMsg\Common\ErrorMsg;
+
 class DirFileOperation
 {
     private $__file_path = '';
@@ -144,7 +146,8 @@ class DirFileOperation
         if($this->__error !== 0){
             switch ($this->__error){
                 case '1':
-                    $msg = '要检测路径是否完整的文件不能为空';
+//                    $msg = '要检测路径是否完整的文件不能为空';
+                    $msg = ErrorMsg::FILE_NAME_IS_EMPTY;
                     break;
             }
         }
