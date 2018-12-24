@@ -33,10 +33,17 @@ namespace youliPhpLib\Common;
 
 class PwdAss
 {
+    static public $instance = null;
     public $itoa64;
     public $iteration_count_log2;
     public $portable_hashes;
     public $random_state;
+
+    static public function getInstance($iteration_count_log2 = 0, $protable_hashes = true){
+        if (is_null(self::$instance))
+            self::$instance = new self($iteration_count_log2, $protable_hashes);
+        return self::$instance;
+    }
 
     function __construct($iteration_count_log2 = 0, $protable_hashes = true){
         $iteration_count_log2 = !empty($iteration_count_log2) && is_numeric($iteration_count_log2) ? $iteration_count_log2 : 0/*$params['iteration_count_log2']*/;
