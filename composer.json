@@ -1,0 +1,19 @@
+{
+    "name": "weaponhsu/youli-php-lib",
+    "description": "宥理公共库",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "huangxu4328",
+            "email": "huangxu4328@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "youliPhpLib\\Common\\": "src/Common"
+        }
+    }
+}
