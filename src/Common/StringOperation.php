@@ -120,7 +120,7 @@ class StringOperation
         $str = null;
         if($type == 'mix')
             $type = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(){}[].,<>\'":';
-        else if($type == 'str')
+        else if($type == 'letter')
             $type = 'abcdefghijklmnopqrstuvwxyz';
         else if($type == 'num')
             $type = '0123456789';
