@@ -34,5 +34,5 @@ require_once "vendor/autoload.php";
 use youliPhpLib\Common\DirFileOperation;
 
 $cla = new DirFileOperation();
-$res = $cla->testFunc();
-echo $res;
+//$res = $cla->testFunc();
+//echo $res;
