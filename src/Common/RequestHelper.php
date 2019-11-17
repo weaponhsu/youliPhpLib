@@ -57,7 +57,7 @@ class RequestHelper
         self::$ssl_key_pem = $ssl_key_pem;
     }
 
-    static public function curlRequest($url, $data = [], $method = 'GET', $headers = [], $use_cert = false, $second = 30)
+    static public function curlRequest($url, $data = [], $method = 'GET', $headers = [], $use_cert = false, $second = 30, $return_resp_code = False)
     {
         $ch = curl_init();
         //设置超时与地址
@@ -103,6 +103,12 @@ class RequestHelper
         }
         $document = curl_exec($ch);
         $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+
+        if ($return_resp_code === true) {
+            $resp_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            return [$resp_code, $header_size, $document];
+        }
+
         if(curl_errno($ch)){
             return new Exception(RequestErrMsg::API_FAILURE . curl_error($ch), '999');
         }
