@@ -92,7 +92,7 @@ class RsaOperation
         if (empty($public_pem))
             throw new Exception(str_replace('%s', '公钥', RsaOperationErrMsg::PEM_IS_EMPTY),
                 RsaOperationErrMsg::PEM_IS_EMPTY_NO);
-        if (file_exists($public_pem))
+        if (! file_exists($public_pem))
             throw new Exception(str_replace('%s', '公钥', RsaOperationErrMsg::PEM_IS_NOT_EXISTS),
                 RsaOperationErrMsg::PEM_IS_NOT_EXISTS_NO);
 
