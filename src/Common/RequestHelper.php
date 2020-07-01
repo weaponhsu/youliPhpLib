@@ -75,6 +75,8 @@ class RequestHelper
             curl_setopt($ch, CURLOPT_HEADER, 1);
             curl_setopt($ch, CURLOPT_FAILONERROR, 0);
         }else{
+            if ($return_resp_code === true)
+                curl_setopt($ch, CURLOPT_HEADER, 1);
             curl_setopt($ch, CURLOPT_HEADER, false);
         }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -101,16 +103,19 @@ class RequestHelper
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         }
+        curl_setopt($ch, CURLOPT_NOBODY, true);
         $document = curl_exec($ch);
         $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $resp_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if ($return_resp_code === true) {
             $resp_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            return [$resp_code, $header_size, $document];
+            $resp_headers = curl_getinfo($ch);
+            return [$resp_code, $resp_headers];
         }
 
         if(curl_errno($ch)){
-            return new Exception(RequestErrMsg::API_FAILURE . curl_error($ch), '999');
+            throw new Exception(RequestErrMsg::API_FAILURE . curl_error($ch), '999');
         }
         curl_close($ch);
 //        return $document;
